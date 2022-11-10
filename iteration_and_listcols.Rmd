@@ -315,14 +315,14 @@ What we did last time:
 ```{r}
 url_base = "https://www.amazon.com/product-reviews/B00005JNBQ/ref=cm_cr_arp_d_viewopt_rvwer?ie=UTF8&reviewerType=avp_only_reviews&sortBy=recent&pageNumber="
 
-vec_urls = str_c(url_base, 1:5)
+vec_url = str_c(url_base, 1:5)
 
 map(vec_url, read_page_reviews)
 
 napoleon_reviews = 
   tibble(
     page = 1:5,
-    page_url = str_c(base_url, page)
+    page_url = str_c(url_base, page)
   ) %>% 
   mutate(
     reviews = map(page_url, read_page_reviews)
